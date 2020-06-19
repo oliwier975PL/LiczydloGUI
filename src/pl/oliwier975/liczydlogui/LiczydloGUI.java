@@ -1,6 +1,7 @@
 package pl.oliwier975.liczydlogui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
@@ -92,7 +93,10 @@ public class LiczydloGUI {
             JTextField tekst3 = new JTextField("Podaj ile razy chcesz ją pododawać");
             tekst3.setBounds(20,130,250,20); tekst3.setEditable(false);
             JTextArea wyjscie = new JTextArea();
-            wyjscie.setBounds(300,10,280,300); wyjscie.setEditable(false);
+            wyjscie.setEditable(false);
+            JScrollPane scroll = new JScrollPane(wyjscie);
+            scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
+            scroll.setBounds(300,10,280,300);
             JButton kalkuluj = new JButton("Kalkuluj");
             kalkuluj.setBounds(20,200,120,32);
             kalkuluj.addActionListener(new ActionListener() {
@@ -115,7 +119,7 @@ public class LiczydloGUI {
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
-            dodawanie_frame.add(exit); dodawanie_frame.add(liczba1); dodawanie_frame.add(tekst1); dodawanie_frame.add(liczba2); dodawanie_frame.add(tekst2); dodawanie_frame.add(liczba3); dodawanie_frame.add(tekst3); dodawanie_frame.add(kalkuluj); dodawanie_frame.add(wyjscie);
+            dodawanie_frame.add(exit); dodawanie_frame.add(liczba1); dodawanie_frame.add(tekst1); dodawanie_frame.add(liczba2); dodawanie_frame.add(tekst2); dodawanie_frame.add(liczba3); dodawanie_frame.add(tekst3); dodawanie_frame.add(kalkuluj); dodawanie_frame.add(scroll);
             exit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
@@ -147,7 +151,10 @@ public class LiczydloGUI {
             JTextField tekst2 = new JTextField("Podaj ile razy chcesz ją wymnożyć");
             tekst2.setBounds(20,70,250,20); tekst2.setEditable(false);
             JTextArea wyjscie = new JTextArea();
-            wyjscie.setBounds(300,10,280,300); wyjscie.setEditable(false);
+            wyjscie.setEditable(false);
+            JScrollPane scroll = new JScrollPane(wyjscie);
+            scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
+            scroll.setBounds(300,10,280,300);
             JButton kalkuluj = new JButton("Kalkuluj");
             kalkuluj.setBounds(20,140,120,32);
             kalkuluj.addActionListener(new ActionListener() {
@@ -168,7 +175,7 @@ public class LiczydloGUI {
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
-            mnozenie_frame.add(exit); mnozenie_frame.add(liczba1); mnozenie_frame.add(tekst1); mnozenie_frame.add(liczba2); mnozenie_frame.add(tekst2); mnozenie_frame.add(kalkuluj); mnozenie_frame.add(wyjscie);
+            mnozenie_frame.add(exit); mnozenie_frame.add(liczba1); mnozenie_frame.add(tekst1); mnozenie_frame.add(liczba2); mnozenie_frame.add(tekst2); mnozenie_frame.add(kalkuluj); mnozenie_frame.add(scroll);
             exit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
@@ -200,7 +207,10 @@ public class LiczydloGUI {
             JTextField tekst2 = new JTextField("Podaj liczbę, od której chcesz dzielić");
             tekst2.setBounds(20,70,250,20); tekst2.setEditable(false);
             JTextArea wyjscie = new JTextArea();
-            wyjscie.setBounds(300,10,280,300); wyjscie.setEditable(false);
+            wyjscie.setEditable(false);
+            JScrollPane scroll = new JScrollPane(wyjscie);
+            scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
+            scroll.setBounds(300,10,280,300);
             JButton kalkuluj = new JButton("Kalkuluj");
             kalkuluj.setBounds(20,140,120,32);
             kalkuluj.addActionListener(new ActionListener() {
@@ -221,7 +231,7 @@ public class LiczydloGUI {
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
-            dzielenie_frame.add(exit); dzielenie_frame.add(liczba1); dzielenie_frame.add(tekst1); dzielenie_frame.add(liczba2); dzielenie_frame.add(tekst2); dzielenie_frame.add(kalkuluj); dzielenie_frame.add(wyjscie);
+            dzielenie_frame.add(exit); dzielenie_frame.add(liczba1); dzielenie_frame.add(tekst1); dzielenie_frame.add(liczba2); dzielenie_frame.add(tekst2); dzielenie_frame.add(kalkuluj); dzielenie_frame.add(scroll);
             exit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
