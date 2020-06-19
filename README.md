@@ -1,0 +1,2 @@
+# LiczydloGUI
+Program pozbawiony sensu.
