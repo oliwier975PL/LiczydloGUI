@@ -1,9 +1,6 @@
 package pl.oliwier975.liczydlogui;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 public class LiczydloGUI {
@@ -99,34 +96,28 @@ public class LiczydloGUI {
             scroll.setBounds(300,10,280,300);
             JButton kalkuluj = new JButton("Kalkuluj");
             kalkuluj.setBounds(20,200,120,32);
-            kalkuluj.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    wyjscie.setText("");
-                    System.out.println("-----------");
-                    float dana1 = Float.parseFloat(liczba1.getText());
-                    float dana2 = Float.parseFloat(liczba2.getText());
-                    float dana3 = Float.parseFloat(liczba3.getText());
-                    float kurier;
-                    for (int dummy = 1; dummy <= dana3; ++dummy) {
-                        kurier = dana1 + dana2;
-                        wyjscie.append(dana1 + " + " + dana2 + " = " + kurier + "\n");
-                        System.out.println(dana1 + " + " + dana2 + " = " + kurier);
-                        dana1 = dana1 + dana2;
-                    }
-                    System.out.println("-----------");
+            kalkuluj.addActionListener(actionEvent -> {
+                wyjscie.setText("");
+                System.out.println("-----------");
+                float dana1 = Float.parseFloat(liczba1.getText());
+                float dana2 = Float.parseFloat(liczba2.getText());
+                float dana3 = Float.parseFloat(liczba3.getText());
+                float kurier;
+                for (int dummy = 1; dummy <= dana3; ++dummy) {
+                    kurier = dana1 + dana2;
+                    wyjscie.append(dana1 + " + " + dana2 + " = " + kurier + "\n");
+                    System.out.println(dana1 + " + " + dana2 + " = " + kurier);
+                    dana1 = dana1 + dana2;
                 }
+                System.out.println("-----------");
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
             dodawanie_frame.add(exit); dodawanie_frame.add(liczba1); dodawanie_frame.add(tekst1); dodawanie_frame.add(liczba2); dodawanie_frame.add(tekst2); dodawanie_frame.add(liczba3); dodawanie_frame.add(tekst3); dodawanie_frame.add(kalkuluj); dodawanie_frame.add(scroll);
-            exit.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    dodawanie_frame.dispose();
-                    dodawanie_openchecker=0;
-                    System.out.println("Windows Dodawanie closed!");
-                }
+            exit.addActionListener(actionEvent -> {
+                dodawanie_frame.dispose();
+                dodawanie_openchecker=0;
+                System.out.println("Windows Dodawanie closed!");
             });
         } else {
             System.out.println("Window Dodawanie is already opened!");
@@ -157,32 +148,26 @@ public class LiczydloGUI {
             scroll.setBounds(300,10,280,300);
             JButton kalkuluj = new JButton("Kalkuluj");
             kalkuluj.setBounds(20,140,120,32);
-            kalkuluj.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    wyjscie.setText("");
-                    System.out.println("-----------");
-                    float dana1 = Float.parseFloat(liczba1.getText());
-                    float dana2 = Float.parseFloat(liczba2.getText());
-                    float kurier;
-                    for (int dummy = 1; dummy <= dana2; ++dummy){
-                        kurier = dana1 * dummy;
-                        wyjscie.append(dana1 + " * " + dummy + " = " + kurier + "\n");
-                        System.out.println(dana1 + " * " + dummy + " = " + kurier);
-                    }
-                    System.out.println("-----------");
+            kalkuluj.addActionListener(actionEvent -> {
+                wyjscie.setText("");
+                System.out.println("-----------");
+                float dana1 = Float.parseFloat(liczba1.getText());
+                float dana2 = Float.parseFloat(liczba2.getText());
+                float kurier;
+                for (int dummy = 1; dummy <= dana2; ++dummy){
+                    kurier = dana1 * dummy;
+                    wyjscie.append(dana1 + " * " + dummy + " = " + kurier + "\n");
+                    System.out.println(dana1 + " * " + dummy + " = " + kurier);
                 }
+                System.out.println("-----------");
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
             mnozenie_frame.add(exit); mnozenie_frame.add(liczba1); mnozenie_frame.add(tekst1); mnozenie_frame.add(liczba2); mnozenie_frame.add(tekst2); mnozenie_frame.add(kalkuluj); mnozenie_frame.add(scroll);
-            exit.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    mnozenie_frame.dispose();
-                    mnozenie_openchecker=0;
-                    System.out.println("Windows Mnożenie closed!");
-                }
+            exit.addActionListener(actionEvent -> {
+                mnozenie_frame.dispose();
+                mnozenie_openchecker=0;
+                System.out.println("Windows Mnożenie closed!");
             });
         } else {
             System.out.println("Window Mnozenie is already opened!");
@@ -213,32 +198,26 @@ public class LiczydloGUI {
             scroll.setBounds(300,10,280,300);
             JButton kalkuluj = new JButton("Kalkuluj");
             kalkuluj.setBounds(20,140,120,32);
-            kalkuluj.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    wyjscie.setText("");
-                    System.out.println("-----------");
-                    float dana1 = Float.parseFloat(liczba1.getText());
-                    int dana2 = Integer.parseInt(liczba2.getText());
-                    float kurier;
-                    for (int dummy = dana2; dummy >= 1; --dummy){
-                        kurier = dana1 / dummy;
-                        wyjscie.append(dana1 + " / " + dummy + " = " + kurier + "\n");
-                        System.out.println(dana1 + " / " + dummy + " = " + kurier);
-                    }
-                    System.out.println("-----------");
+            kalkuluj.addActionListener(actionEvent -> {
+                wyjscie.setText("");
+                System.out.println("-----------");
+                float dana1 = Float.parseFloat(liczba1.getText());
+                int dana2 = Integer.parseInt(liczba2.getText());
+                float kurier;
+                for (int dummy = dana2; dummy >= 1; --dummy){
+                    kurier = dana1 / dummy;
+                    wyjscie.append(dana1 + " / " + dummy + " = " + kurier + "\n");
+                    System.out.println(dana1 + " / " + dummy + " = " + kurier);
                 }
+                System.out.println("-----------");
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
             dzielenie_frame.add(exit); dzielenie_frame.add(liczba1); dzielenie_frame.add(tekst1); dzielenie_frame.add(liczba2); dzielenie_frame.add(tekst2); dzielenie_frame.add(kalkuluj); dzielenie_frame.add(scroll);
-            exit.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    dzielenie_frame.dispose();
-                    dzielenie_openchecker=0;
-                    System.out.println("Window Dzielenie closed!");
-                }
+            exit.addActionListener(actionEvent -> {
+                dzielenie_frame.dispose();
+                dzielenie_openchecker=0;
+                System.out.println("Window Dzielenie closed!");
             });
         } else {
             System.out.println("Window Dzielenie is already opened!");
@@ -281,30 +260,15 @@ public class LiczydloGUI {
             JButton dodawanie = new JButton("Dodawanie");
             dodawanie.setBounds(20, 20, 120, 32);
             ramka.add(dodawanie);
-            dodawanie.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    dodawanie_open();
-                }
-            });
+            dodawanie.addActionListener(actionEvent -> dodawanie_open());
             JButton mnozenie = new JButton("Mnożenie");
             mnozenie.setBounds(160, 20, 120, 32);
             ramka.add(mnozenie);
-            mnozenie.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    mnozenie_open();
-                }
-            });
+            mnozenie.addActionListener(actionEvent -> mnozenie_open());
             JButton dzielenie = new JButton("Dzielenie");
             dzielenie.setBounds(300, 20, 120, 32);
             ramka.add(dzielenie);
-            dzielenie.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent) {
-                    dzielenie_open();
-                }
-            });
+            dzielenie.addActionListener(actionEvent -> dzielenie_open());
         }
     }
 }
