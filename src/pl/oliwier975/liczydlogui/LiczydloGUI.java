@@ -1,73 +1,99 @@
 package pl.oliwier975.liczydlogui;
 
 import javax.swing.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LiczydloGUI {
-    public static int dodawanie_openchecker = 0;
-    public static int mnozenie_openchecker = 0;
-    public static int dzielenie_openchecker = 0;
-    public static void cli_help(){
+    private static int dodawanie_openchecker = 0;
+    private static int mnozenie_openchecker = 0;
+    private static int dzielenie_openchecker = 0;
+    private static boolean isAllowed(String wartosc, String wartosc2, String wartosc3){
+        try {
+            Float.parseFloat(wartosc);
+            Float.parseFloat(wartosc2);
+            Integer.parseInt(wartosc3);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }
+    private static void cli_help(){
         System.out.println("Available arguments:");
         System.out.println("dodawanie");
         System.out.println("↳ Dodaje wiele liczb.");
         System.out.println("mnozenie");
-        System.out.println("↳ Duzo mnozy.");
+        System.out.println("↳ Dużo mnoży.");
         System.out.println("dzielenie");
-        System.out.println("↳ Dzieli w dol.");
+        System.out.println("↳ Dzieli w dół.");
         System.out.println("--help");
         System.out.println("↳ Prints this message.");
     }
-    public static void cli_dodawanie(){
-        Scanner input1 = new Scanner(System.in);
-        System.out.print("Podaj liczbę, którą chcesz pododawać: ");
-        float liczba1 = input1.nextFloat();
-        Scanner input2 = new Scanner(System.in);
-        System.out.print("Podaj jaką liczbą chcesz ją pododawać: ");
-        float liczba2 = input2.nextFloat();
-        Scanner input3 = new Scanner(System.in);
-        System.out.print("Podaj ile razy chcesz ją pododawać: ");
-        int liczba3 = input3.nextInt();
-        float kurier;
-        System.out.println("-----------");
-        for (int dummy = 1; dummy <= liczba3; ++dummy) {
-            kurier = liczba1 + liczba2;
-            System.out.println(liczba1 + " + " + liczba2 + " = " + kurier);
-            liczba1 = liczba1 + liczba2;
+    private static void cli_dodawanie(){
+        try {
+            Scanner input1 = new Scanner(System.in);
+            System.out.print("Podaj liczbę, którą chcesz pododawać: ");
+            float liczba1 = input1.nextFloat();
+            Scanner input2 = new Scanner(System.in);
+            System.out.print("Podaj jaką liczbą chcesz ją pododawać: ");
+            float liczba2 = input2.nextFloat();
+            Scanner input3 = new Scanner(System.in);
+            System.out.print("Podaj ile razy chcesz ją pododawać: ");
+            int liczba3 = input3.nextInt();
+            float kurier;
+            System.out.println("-----------");
+            for (int dummy = 1; dummy <= liczba3; ++dummy) {
+                kurier = liczba1 + liczba2;
+                System.out.println(liczba1 + " + " + liczba2 + " = " + kurier);
+                liczba1 = liczba1 + liczba2;
+            }
+            System.out.println("-----------");
+        } catch (InputMismatchException e){
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            System.out.println("Wprowadzono nieprawidłową liczbę!");
         }
-        System.out.println("-----------");
     }
-    public static void cli_mnozenie(){
-        Scanner input1 = new Scanner(System.in);
-        System.out.print("Podaj liczbę, którą chcesz wymnożyć: ");
-        float liczba1 = input1.nextFloat();
-        Scanner input2 = new Scanner(System.in);
-        System.out.print("Podaj ile razy chcesz ją wymnożyć: ");
-        int liczba2 = input2.nextInt();
-        float kurier;
-        System.out.println("-----------");
-        for (int dummy = 1; dummy <= liczba2; ++dummy) {
-            kurier = liczba1 * dummy;
-            System.out.println(liczba1 + " * " + dummy + " = " + kurier);
+    private static void cli_mnozenie(){
+        try {
+            Scanner input1 = new Scanner(System.in);
+            System.out.print("Podaj liczbę, którą chcesz wymnożyć: ");
+            float liczba1 = input1.nextFloat();
+            Scanner input2 = new Scanner(System.in);
+            System.out.print("Podaj ile razy chcesz ją wymnożyć: ");
+            int liczba2 = input2.nextInt();
+            float kurier;
+            System.out.println("-----------");
+            for (int dummy = 1; dummy <= liczba2; ++dummy) {
+                kurier = liczba1 * dummy;
+                System.out.println(liczba1 + " * " + dummy + " = " + kurier);
+            }
+            System.out.println("-----------");
+        } catch (InputMismatchException e){
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            System.out.println("Wprowadzono nieprawidłową liczbę!");
         }
-        System.out.println("-----------");
     }
-    public static void cli_dzielenie(){
-        Scanner input1 = new Scanner(System.in);
-        System.out.print("Podaj liczbe, która chcesz popodzielać: ");
-        float liczba1 = input1.nextFloat();
-        Scanner input2 = new Scanner(System.in);
-        System.out.print("Podaj liczbę, od której chcesz dzielić: ");
-        int liczba2 = input2.nextInt();
-        float kurier;
-        System.out.println("-----------");
-        for (int dummy = liczba2; dummy >= 1; --dummy) {
-            kurier = liczba1 / dummy;
-            System.out.println(liczba1 + " / " + dummy + " = " + kurier);
+    private static void cli_dzielenie(){
+        try {
+            Scanner input1 = new Scanner(System.in);
+            System.out.print("Podaj liczbe, która chcesz popodzielać: ");
+            float liczba1 = input1.nextFloat();
+            Scanner input2 = new Scanner(System.in);
+            System.out.print("Podaj liczbę od której chcesz dzielić: ");
+            int liczba2 = input2.nextInt();
+            float kurier;
+            System.out.println("-----------");
+            for (int dummy = liczba2; dummy >= 1; --dummy) {
+                kurier = liczba1 / dummy;
+                System.out.println(liczba1 + " / " + dummy + " = " + kurier);
+            }
+            System.out.println("-----------");
+        } catch (InputMismatchException e){
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            System.out.println("Wprowadzono nieprawidłową liczbę!");
         }
-        System.out.println("-----------");
     }
-    public static void dodawanie_open() {
+    private static void dodawanie_open() {
         if (dodawanie_openchecker == 0) {
             dodawanie_openchecker = 1;
             System.out.println("Window Dodawanie opened!");
@@ -98,18 +124,24 @@ public class LiczydloGUI {
             kalkuluj.setBounds(20,200,120,32);
             kalkuluj.addActionListener(actionEvent -> {
                 wyjscie.setText("");
-                System.out.println("-----------");
-                float dana1 = Float.parseFloat(liczba1.getText());
-                float dana2 = Float.parseFloat(liczba2.getText());
-                float dana3 = Float.parseFloat(liczba3.getText());
-                float kurier;
-                for (int dummy = 1; dummy <= dana3; ++dummy) {
-                    kurier = dana1 + dana2;
-                    wyjscie.append(dana1 + " + " + dana2 + " = " + kurier + "\n");
-                    System.out.println(dana1 + " + " + dana2 + " = " + kurier);
-                    dana1 = dana1 + dana2;
+                if (isAllowed(liczba1.getText(),liczba2.getText(),liczba3.getText())){
+                    System.out.println("-----------");
+                    float dana1 = Float.parseFloat(liczba1.getText());
+                    float dana2 = Float.parseFloat(liczba2.getText());
+                    int dana3 = Integer.parseInt(liczba3.getText());
+                    float kurier;
+                    for (int dummy = 1; dummy <= dana3; ++dummy) {
+                        kurier = dana1 + dana2;
+                        wyjscie.append(dana1 + " + " + dana2 + " = " + kurier + "\n");
+                        System.out.println(dana1 + " + " + dana2 + " = " + kurier);
+                        dana1 = dana1 + dana2;
+                    }
+                    System.out.println("-----------");
+                } else {
+                    java.awt.Toolkit.getDefaultToolkit().beep();
+                    System.out.println("Wprowadzono nieprawidłową liczbę!");
+                    wyjscie.setText("Wprowadzono nieprawidłową liczbę!");
                 }
-                System.out.println("-----------");
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
@@ -123,7 +155,7 @@ public class LiczydloGUI {
             System.out.println("Window Dodawanie is already opened!");
         }
         }
-    public static void mnozenie_open() {
+    private static void mnozenie_open() {
         if (mnozenie_openchecker == 0) {
             mnozenie_openchecker = 1;
             System.out.println("Window Mnożenie opened!");
@@ -150,16 +182,22 @@ public class LiczydloGUI {
             kalkuluj.setBounds(20,140,120,32);
             kalkuluj.addActionListener(actionEvent -> {
                 wyjscie.setText("");
-                System.out.println("-----------");
-                float dana1 = Float.parseFloat(liczba1.getText());
-                float dana2 = Float.parseFloat(liczba2.getText());
-                float kurier;
-                for (int dummy = 1; dummy <= dana2; ++dummy){
-                    kurier = dana1 * dummy;
-                    wyjscie.append(dana1 + " * " + dummy + " = " + kurier + "\n");
-                    System.out.println(dana1 + " * " + dummy + " = " + kurier);
+                if (isAllowed(liczba1.getText(),"0",liczba2.getText())) {
+                    System.out.println("-----------");
+                    float dana1 = Float.parseFloat(liczba1.getText());
+                    int dana2 = Integer.parseInt(liczba2.getText());
+                    float kurier;
+                    for (int dummy = 1; dummy <= dana2; ++dummy) {
+                        kurier = dana1 * dummy;
+                        wyjscie.append(dana1 + " * " + dummy + " = " + kurier + "\n");
+                        System.out.println(dana1 + " * " + dummy + " = " + kurier);
+                    }
+                    System.out.println("-----------");
+                } else {
+                    java.awt.Toolkit.getDefaultToolkit().beep();
+                    System.out.println("Wprowadzono nieprawidłową liczbę!");
+                    wyjscie.setText("Wprowadzono nieprawidłową liczbę!");
                 }
-                System.out.println("-----------");
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
@@ -173,7 +211,7 @@ public class LiczydloGUI {
             System.out.println("Window Mnozenie is already opened!");
         }
     }
-    public static void dzielenie_open() {
+    private static void dzielenie_open() {
         if (dzielenie_openchecker == 0) {
             dzielenie_openchecker = 1;
             System.out.println("Window Dzielenie opened!");
@@ -189,7 +227,7 @@ public class LiczydloGUI {
             tekst1.setBounds(20,10,250,20); tekst1.setEditable(false);
             JTextField liczba2 = new JTextField();
             liczba2.setBounds(20,90,100,32);
-            JTextField tekst2 = new JTextField("Podaj liczbę, od której chcesz dzielić");
+            JTextField tekst2 = new JTextField("Podaj liczbę od której chcesz dzielić");
             tekst2.setBounds(20,70,250,20); tekst2.setEditable(false);
             JTextArea wyjscie = new JTextArea();
             wyjscie.setEditable(false);
@@ -200,16 +238,22 @@ public class LiczydloGUI {
             kalkuluj.setBounds(20,140,120,32);
             kalkuluj.addActionListener(actionEvent -> {
                 wyjscie.setText("");
-                System.out.println("-----------");
-                float dana1 = Float.parseFloat(liczba1.getText());
-                int dana2 = Integer.parseInt(liczba2.getText());
-                float kurier;
-                for (int dummy = dana2; dummy >= 1; --dummy){
-                    kurier = dana1 / dummy;
-                    wyjscie.append(dana1 + " / " + dummy + " = " + kurier + "\n");
-                    System.out.println(dana1 + " / " + dummy + " = " + kurier);
+                if (isAllowed(liczba1.getText(),"0",liczba2.getText())) {
+                    System.out.println("-----------");
+                    float dana1 = Float.parseFloat(liczba1.getText());
+                    int dana2 = Integer.parseInt(liczba2.getText());
+                    float kurier;
+                    for (int dummy = dana2; dummy >= 1; --dummy) {
+                        kurier = dana1 / dummy;
+                        wyjscie.append(dana1 + " / " + dummy + " = " + kurier + "\n");
+                        System.out.println(dana1 + " / " + dummy + " = " + kurier);
+                    }
+                    System.out.println("-----------");
+                } else {
+                    java.awt.Toolkit.getDefaultToolkit().beep();
+                    System.out.println("Wprowadzono nieprawidłową liczbę!");
+                    wyjscie.setText("Wprowadzono nieprawidłową liczbę!");
                 }
-                System.out.println("-----------");
             });
             JButton exit = new JButton("Wyjdź");
             exit.setBounds(460, 320, 120, 32);
@@ -255,6 +299,7 @@ public class LiczydloGUI {
             ramka.setSize(440, 110);
             ramka.setLayout(null);
             ramka.setVisible(true);
+            ramka.setResizable(false);
             ramka.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             System.out.println("Opened Main window!");
             JButton dodawanie = new JButton("Dodawanie");
