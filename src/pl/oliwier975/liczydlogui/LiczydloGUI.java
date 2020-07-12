@@ -268,7 +268,7 @@ public class LiczydloGUI {
         }
     }
     public static void main(String[] args) {
-        String Version = "0.3.1";
+        String Version = "0.4";
         System.out.println("LiczydłoGUI " + Version);
         if (args.length > 0) {
             System.out.println("Using cli interface.");
