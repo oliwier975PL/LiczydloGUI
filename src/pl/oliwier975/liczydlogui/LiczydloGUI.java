@@ -8,6 +8,7 @@ public class LiczydloGUI {
     private static int dodawanie_openchecker = 0;
     private static int mnozenie_openchecker = 0;
     private static int dzielenie_openchecker = 0;
+    private static int potegowanie_openchecker = 0;
     private static boolean isAllowed(String wartosc, String wartosc2, String wartosc3){
         try {
             Float.parseFloat(wartosc);
@@ -26,6 +27,8 @@ public class LiczydloGUI {
         System.out.println("↳ Dużo mnoży.");
         System.out.println("dzielenie");
         System.out.println("↳ Dzieli w dół.");
+        System.out.println("potegowanie");
+        System.out.println("↳ Potęguje.");
         System.out.println("--help");
         System.out.println("↳ Prints this message.");
     }
@@ -86,6 +89,26 @@ public class LiczydloGUI {
             for (int dummy = liczba2; dummy >= 1; --dummy) {
                 kurier = liczba1 / dummy;
                 System.out.println(liczba1 + " / " + dummy + " = " + kurier);
+            }
+            System.out.println("-----------");
+        } catch (InputMismatchException e){
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            System.out.println("Wprowadzono nieprawidłową liczbę!");
+        }
+    }
+    private static void cli_potegowanie(){
+        try {
+            Scanner input1 = new Scanner(System.in);
+            System.out.print("Podaj liczbę, którą chcesz potęgować: ");
+            float liczba1 = input1.nextFloat();
+            Scanner input2 = new Scanner(System.in);
+            System.out.print("Podaj ile razy chcesz ją zpotęgować: ");
+            int liczba2 = input2.nextInt();
+            float kurier;
+            System.out.println("-----------");
+            for (int dummy = 1; dummy <= liczba2; ++dummy) {
+                kurier = (float) Math.pow(liczba1, dummy);
+                System.out.println(liczba1 + " ^ " + dummy + " = " + kurier);
             }
             System.out.println("-----------");
         } catch (InputMismatchException e){
@@ -205,10 +228,10 @@ public class LiczydloGUI {
             exit.addActionListener(actionEvent -> {
                 mnozenie_frame.dispose();
                 mnozenie_openchecker=0;
-                System.out.println("Windows Mnożenie closed!");
+                System.out.println("Window Mnożenie closed!");
             });
         } else {
-            System.out.println("Window Mnozenie is already opened!");
+            System.out.println("Window Mnożenie is already opened!");
         }
     }
     private static void dzielenie_open() {
@@ -267,6 +290,62 @@ public class LiczydloGUI {
             System.out.println("Window Dzielenie is already opened!");
         }
     }
+    private static void potegowanie_open() {
+        if (potegowanie_openchecker == 0) {
+            potegowanie_openchecker = 1;
+            System.out.println("Window Potęgowanie opened!");
+            JFrame potegowanie_frame = new JFrame("Potęgowanie");
+            potegowanie_frame.setSize(600, 400);
+            potegowanie_frame.setLayout(null);
+            potegowanie_frame.setVisible(true);
+            potegowanie_frame.setResizable(false);
+            potegowanie_frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            JTextField liczba1 = new JTextField();
+            liczba1.setBounds(20,30,100,32);
+            JTextField tekst1 = new JTextField("Podaj liczbę, którą chcesz potęgować");
+            tekst1.setBounds(20,10,250,20); tekst1.setEditable(false);
+            JTextField liczba2 = new JTextField();
+            liczba2.setBounds(20,90,100,32);
+            JTextField tekst2 = new JTextField("Podaj ile razy chcesz ją zpotęgować");
+            tekst2.setBounds(20,70,250,20); tekst2.setEditable(false);
+            JTextArea wyjscie = new JTextArea();
+            wyjscie.setEditable(false);
+            JScrollPane scroll = new JScrollPane(wyjscie);
+            scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
+            scroll.setBounds(300,10,280,300);
+            JButton kalkuluj = new JButton("Kalkuluj");
+            kalkuluj.setBounds(20,140,120,32);
+            kalkuluj.addActionListener(actionEvent -> {
+                wyjscie.setText("");
+                if (isAllowed(liczba1.getText(),"0",liczba2.getText())) {
+                    System.out.println("-----------");
+                    float dana1 = Float.parseFloat(liczba1.getText());
+                    int dana2 = Integer.parseInt(liczba2.getText());
+                    float kurier;
+                    for (int dummy = 1; dummy <= dana2; ++dummy) {
+                        kurier = (float) Math.pow(dana1, dummy);
+                        wyjscie.append(dana1 + " ^ " + dummy + " = " + kurier + "\n");
+                        System.out.println(dana1 + " ^ " + dummy + " = " + kurier);
+                    }
+                    System.out.println("-----------");
+                } else {
+                    java.awt.Toolkit.getDefaultToolkit().beep();
+                    System.out.println("Wprowadzono nieprawidłową liczbę!");
+                    wyjscie.setText("Wprowadzono nieprawidłową liczbę!");
+                }
+            });
+            JButton exit = new JButton("Wyjdź");
+            exit.setBounds(460, 320, 120, 32);
+            potegowanie_frame.add(exit); potegowanie_frame.add(liczba1); potegowanie_frame.add(tekst1); potegowanie_frame.add(liczba2); potegowanie_frame.add(tekst2); potegowanie_frame.add(kalkuluj); potegowanie_frame.add(scroll);
+            exit.addActionListener(actionEvent -> {
+                potegowanie_frame.dispose();
+                potegowanie_openchecker=0;
+                System.out.println("Window Potęgowanie closed!");
+            });
+        } else {
+            System.out.println("Window Potęgowanie is already opened!");
+        }
+    }
     public static void main(String[] args) {
         String Version = "0.4";
         System.out.println("LiczydłoGUI " + Version);
@@ -284,6 +363,8 @@ public class LiczydloGUI {
                         cli_mnozenie();
                     } else if (args[1].equals("dzielenie") | args[1].equals("-d")){
                         cli_dzielenie();
+                    } else if (args[1].equals("potegowanie") | args[1].equals("-p")){
+                        cli_potegowanie();
                     } else {
                         System.out.println("Bad argument. Type --cli --help for usage.");
                     }
@@ -296,7 +377,7 @@ public class LiczydloGUI {
         } else {
             System.out.println("You can use --cli argument for cli interface.");
             JFrame ramka = new JFrame("LiczydłoGUI");
-            ramka.setSize(440, 110);
+            ramka.setSize(590, 110);
             ramka.setLayout(null);
             ramka.setVisible(true);
             ramka.setResizable(false);
@@ -314,6 +395,10 @@ public class LiczydloGUI {
             dzielenie.setBounds(300, 20, 120, 32);
             ramka.add(dzielenie);
             dzielenie.addActionListener(actionEvent -> dzielenie_open());
+            JButton potegowanie = new JButton("Potęgowanie");
+            potegowanie.setBounds(440,20,130,32);
+            ramka.add(potegowanie);
+            potegowanie.addActionListener(actionEvent -> potegowanie_open());
         }
     }
 }
