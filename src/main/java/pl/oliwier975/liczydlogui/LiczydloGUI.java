@@ -20,7 +20,7 @@ public class LiczydloGUI {
         if (args.length > 0) {
             System.out.println("Używanie interfejsu konsolowego.");
             if (args[0].equals("--cli") | args[0].equals("-c")) {
-                if (args.length > 1){
+                if (args.length > 1) {
                     if (args[1].isEmpty()) System.out.println("Wpisz --cli --help, by wyświetlić stronę pomocy.");
                     else if (args[1].equals("--help") | args[1].equals("-h")) {
                         System.out.println("Dostępne argumenty:");
@@ -39,7 +39,7 @@ public class LiczydloGUI {
                     else if (args[1].equals("mnozenie") | args[1].equals("-m")) new MultiplicationCLI();
                     else if (args[1].equals("dzielenie") | args[1].equals("-d")) new DivisionCLI();
                     else if (args[1].equals("potegowanie") | args[1].equals("-p")) new PowerCLI();
-                    else System.out.println("Bad argument. Type --cli --help for usage.");
+                    else System.out.println("Niepoprawny argument. Wpisz --cli --help, by wyświetlić stronę pomocy.");
                 } else System.out.println("Wpisz --cli --help, by wyświetlić stronę pomocy.");
             } else System.out.println("Niepoprawny argument. Wpisz --cli --help, by wyświetlić stronę pomocy.");
         } else {
