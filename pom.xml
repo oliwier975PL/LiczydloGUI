@@ -6,7 +6,7 @@
 
     <groupId>pl.oliwier975</groupId>
     <artifactId>LiczydloGUI</artifactId>
-    <version>0.5</version>
+    <version>0.4.1</version>
 
     <build>
         <plugins>
