@@ -12,29 +12,42 @@ public class AdditionGUI {
         if (!Util.ADDITION_OPENED) {
             Util.ADDITION_OPENED = true;
             System.out.println("Otworzono okno \"Dodawanie\"!");
+
             JFrame additionFrame = new JFrame("Dodawanie");
             additionFrame.setSize(600, 400);
             additionFrame.setLayout(null);
             additionFrame.setVisible(true);
             additionFrame.setResizable(false);
             additionFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
             JTextField component1 = new JTextField();
             component1.setBounds(20,30,100,32);
+
             JTextField component1Question = new JTextField("Pierwszy składnik dodawania:");
-            component1Question.setBounds(20,10,250,20); component1Question.setEditable(false);
+            component1Question.setBounds(20,10,250,20);
+            component1Question.setEditable(false);
+
             JTextField component2 = new JTextField();
             component2.setBounds(20,90,100,32);
+
             JTextField component2Question = new JTextField("Drugi składnik dodawania:");
-            component2Question.setBounds(20,70,250,20); component2Question.setEditable(false);
+            component2Question.setBounds(20,70,250,20);
+            component2Question.setEditable(false);
+
             JTextField howManyTimes = new JTextField();
             howManyTimes.setBounds(20,150,100,32);
+
             JTextField howManyTimesQuestion = new JTextField("Ile razy chcesz dodawać?");
-            howManyTimesQuestion.setBounds(20,130,250,20); howManyTimesQuestion.setEditable(false);
+            howManyTimesQuestion.setBounds(20,130,250,20);
+            howManyTimesQuestion.setEditable(false);
+
             JTextArea exit = new JTextArea();
             exit.setEditable(false);
+
             JScrollPane scroll = new JScrollPane(exit);
             scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
             scroll.setBounds(300,10,280,300);
+
             JButton calculate = new JButton("Kalkuluj");
             calculate.setBounds(20,200,120,32);
             calculate.addActionListener(actionEvent -> {
@@ -56,16 +69,18 @@ public class AdditionGUI {
                     exit.setText("Wprowadzono nieprawidłową liczbę!");
                 }
             });
+
             JButton exitButton = new JButton("Wyjdź");
             exitButton.setBounds(460, 320, 120, 32);
-            Component[] frameElements = {exitButton, component1, component1Question, component2, component2Question, howManyTimes,
-                    howManyTimesQuestion, calculate, scroll};
-            for (Component frameElement : frameElements) additionFrame.add(frameElement);
             exitButton.addActionListener(actionEvent -> {
                 additionFrame.dispose();
                 Util.ADDITION_OPENED = false;
                 System.out.println("Zamknięto okno \"Dodawanie\"!");
             });
+
+            Component[] frameElements = {exitButton, component1, component1Question, component2, component2Question, howManyTimes,
+                    howManyTimesQuestion, calculate, scroll};
+            for (Component frameElement : frameElements) additionFrame.add(frameElement);
         }
     }
 }

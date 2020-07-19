@@ -9,9 +9,11 @@ public class MultiplicationCLI {
             Scanner multiplicandQuestion = new Scanner(System.in);
             System.out.print("Jaką liczbę chcesz wymnożyć: ");
             float multiplicand = multiplicandQuestion.nextFloat();
+
             Scanner multiplierQuestion = new Scanner(System.in);
             System.out.print("Ile razy: ");
             int multiplier = multiplierQuestion.nextInt();
+
             System.out.println("-----------");
             for (int dummy = 1; dummy <= multiplier; ++dummy) {
                 float result = multiplicand * dummy;

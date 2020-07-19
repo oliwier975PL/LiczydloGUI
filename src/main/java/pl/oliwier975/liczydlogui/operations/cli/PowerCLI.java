@@ -9,9 +9,11 @@ public class PowerCLI {
             Scanner numberQuestion = new Scanner(System.in);
             System.out.print("Jaką liczbę chcesz spotęgować: ");
             float number = numberQuestion.nextFloat();
+
             Scanner howManyTimesQuestion = new Scanner(System.in);
             System.out.print("Ile razy chcesz ją spotęgować: ");
             int howManyTimes = howManyTimesQuestion.nextInt();
+
             System.out.println("-----------");
             for (int dummy = 1; dummy <= howManyTimes; ++dummy) {
                 float result = (float) Math.pow(number, dummy);
