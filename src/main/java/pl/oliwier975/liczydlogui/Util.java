@@ -18,4 +18,9 @@ public abstract class Util {
             return false;
         }
     }
+
+    public static void commandArgument(String name, String description) {
+        System.out.println(" " + name);
+        System.out.println("    ↳ " + description);
+    }
 }

@@ -14,53 +14,47 @@ import java.awt.*;
 
 public final class LiczydloGUI {
     private static final String VERSION = "0.4.1";
-    private static final String BAD_ARGUMENT = "Niepoprawny argument. Wpisz --cli --help, by wyświetlić stronę pomocy.";
-    private static final String HELP = "Wpisz --cli --help, by wyświetlić stronę pomocy.";
+    private static final String HELP = "Wpisz --help, by wyświetlić stronę pomocy.";
+    private static final String BAD_ARGUMENT = "Niepoprawny argument. " + HELP;
 
     public static void main(String[] args) {
         System.out.println("LiczydłoGUI " + VERSION);
         if (args.length > 0) {
-            System.out.println("Używanie interfejsu konsolowego.");
-            if (args[0].equals("--cli") | args[0].equals("-c")) {
-                if (args.length > 1) {
-                    if (args[1].isEmpty()) System.out.println(HELP);
-                    else {
-                        switch (args[1].toLowerCase()) {
-                            case "--help":
-                            case "-h":
-                                System.out.println("Dostępne argumenty:");
-                                System.out.println("dodawanie");
-                                System.out.println("↳ Dodaje wiele liczb.");
-                                System.out.println("mnozenie");
-                                System.out.println("↳ Dużo mnoży.");
-                                System.out.println("dzielenie");
-                                System.out.println("↳ Dzieli w dół.");
-                                System.out.println("potegowanie");
-                                System.out.println("↳ Potęguje.");
-                                System.out.println("--help");
-                                System.out.println("↳ Wyświetla tę wiadomość.");
-                                break;
-                            case "dodawanie":
-                            case "-a":
-                                new AdditionCLI(); break;
-                            case "mnozenie":
-                            case "-m":
-                                new MultiplicationCLI(); break;
-                            case "dzielenie":
-                            case "-d":
-                                new DivisionCLI(); break;
-                            case "potegowanie":
-                            case "-p":
-                                new PowerCLI(); break;
-                            default:
-                                System.out.println(BAD_ARGUMENT);
-                                break;
-                        }
-                    }
-                } else System.out.println(HELP);
-            } else System.out.println(BAD_ARGUMENT);
+            if (args[0].isEmpty()) System.out.println(HELP);
+            else {
+                switch (args[0].toLowerCase()) {
+                    case "--help":
+                    case "-h":
+                        System.out.println("Dostępne argumenty:");
+                        Util.commandArgument("-a, --dodawanie", "Dodaje wiele liczb.");
+                        Util.commandArgument("-m, --mnozenie", "Dużo mnoży.");
+                        Util.commandArgument("-d, --dzielenie", "Dzieli w dół.");
+                        Util.commandArgument("-p, --potegowanie", "Potęguje.");
+                        Util.commandArgument("-h, --help", "Wyświetla tę wiadomość.");
+                        break;
+                    case "--dodawanie":
+                    case "-a":
+                        new AdditionCLI();
+                        break;
+                    case "--mnozenie":
+                    case "-m":
+                        new MultiplicationCLI();
+                        break;
+                    case "--dzielenie":
+                    case "-d":
+                        new DivisionCLI();
+                        break;
+                    case "--potegowanie":
+                    case "-p":
+                        new PowerCLI();
+                        break;
+                    default:
+                        System.out.println(BAD_ARGUMENT);
+                        break;
+                }
+            }
         } else {
-            System.out.println("Możesz użyć argumentu --cli, by użyć interfejsu konsolowego.");
+            System.out.println(HELP);
 
             JFrame frame = new JFrame("LiczydłoGUI");
             frame.setSize(590, 110);
@@ -84,7 +78,7 @@ public final class LiczydloGUI {
             division.addActionListener(actionEvent -> new DivisionGUI());
 
             JButton power = new JButton("Potęgowanie");
-            power.setBounds(440,20,130,32);
+            power.setBounds(440, 20, 130, 32);
             power.addActionListener(actionEvent -> new PowerGUI());
 
             Component[] frameElements = {addition, multiplication, division, power};
