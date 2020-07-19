@@ -9,9 +9,11 @@ public class DivisionCLI {
             Scanner dividendQuestion = new Scanner(System.in);
             System.out.print("Jaką liczbę chcesz dzielić: ");
             float dividend = dividendQuestion.nextFloat();
+
             Scanner dividerQuestion = new Scanner(System.in);
             System.out.print("Jaka jest liczba, od której chcesz dzielić: ");
             int divider = dividerQuestion.nextInt();
+
             System.out.println("-----------");
             for (int dummy = divider; dummy >= 1; --dummy) {
                 float result = dividend / dummy;
